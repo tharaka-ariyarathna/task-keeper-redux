@@ -6,13 +6,17 @@ import "./App.css";
 const App = () => {
   return (
   <div className="app container-fluid">
-    <div className="row mt-4">
+    <div className="row mt-5">
         <div className="d-flex justify-content-center title ">
             <p className="m-2">TASK KEEPER</p>
         </div>
     </div>
-    <AddTask />
-    <ShowTask />
+    <div className="row mt-5">
+        <AddTask />
+    </div>
+    <div className="row mt-5">
+        <ShowTask />
+    </div>
   </div>
   );
 };
