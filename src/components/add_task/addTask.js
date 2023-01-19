@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./addTask.css";
 
-const AddTask = ({ setTaskList, taskList, edit, setEdit }) => {
+const AddTask = () => {
   const [formData, setFormData] = useState({ title: "", description: "" });
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -15,29 +16,10 @@ const AddTask = ({ setTaskList, taskList, edit, setEdit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!edit){
-      setTaskList([...taskList, formData]);
-      handleClear();
-    }else{
-      setTaskList(prev =>{
-        return prev.map((task, index) => {
-          if(index == Number(edit)){
-            return formData ;
-          }else{
-            return task ;
-          }
-        })
-      })
-      setEdit(null) ;
-      handleClear();
-    }
+    handleClear();
   };
 
-  useEffect(() => {
-    if(edit){
-      setFormData(taskList[Number(edit)])
-    }
-  }, [edit])
+  useEffect(() => {}, []);
 
   return (
     <div className="addtask">

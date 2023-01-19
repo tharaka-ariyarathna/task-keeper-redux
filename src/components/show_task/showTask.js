@@ -1,17 +1,16 @@
 import React from "react";
 import Task from '../task/task' ;
+import {taskList} from '../dummy data/taskList' ;
 import "./showTask.css";
 
-const ShowTask = ({ taskList, setTaskList, setEdit }) => {
+const ShowTask = () => {
+
   const handleDelete = (e) => {
-    setTaskList((prev) => prev.filter((_, index) => index != e.target.id));
-    setTimeout(() => {
-        alert("Item deleted")
-    }, 3000);
+    
   };
 
   const handleEdit = (e) => {
-    setEdit(e.target.id) ;
+    
   }
 
   return (

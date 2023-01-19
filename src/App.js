@@ -4,11 +4,6 @@ import ShowTask from "./components/show_task/showTask";
 import "./App.css";
 
 const App = () => {
-  const [taskList, setTaskList] = useState([]);
-  const [edit, setEdit] = useState(null);
-  console.log(taskList);
-  console.log(edit) ;
-
   return (
     <div className="app container-fluid">
       <div className="row mt-5">
@@ -17,19 +12,10 @@ const App = () => {
         </div>
       </div>
       <div className="row mt-5">
-        <AddTask
-          setTaskList={setTaskList}
-          taskList={taskList}
-          edit={edit}
-          setEdit={setEdit}
-        />
+        <AddTask />
       </div>
       <div className="row mt-5">
-        <ShowTask
-          taskList={taskList}
-          setTaskList={setTaskList}
-          setEdit={setEdit}
-        />
+        <ShowTask />
       </div>
     </div>
   );
