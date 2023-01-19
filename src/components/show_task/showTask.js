@@ -1,9 +1,7 @@
 import React from "react";
 import "./showTask.css";
 
-const ShowTask = () => {
-    //const []
-
+const ShowTask = () => { 
     const taskListDummy = [
     { title: "task1", description: "have to complete task 1" },
     { title: "task2", description: "have to complete task 2" },

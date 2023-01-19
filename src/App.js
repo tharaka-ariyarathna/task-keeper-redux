@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import AddTask from "./components/add_task/addTask";
 import ShowTask from "./components/show_task/showTask";
 import "./App.css";
 
 const App = () => {
+  const [taskList, setTaskList] = useState({}) ;
+  console.log(taskList) ;
+
   return (
   <div className="app container-fluid">
     <div className="row mt-5">
@@ -12,10 +15,10 @@ const App = () => {
         </div>
     </div>
     <div className="row mt-5">
-        <AddTask />
+        <AddTask setTaskList={setTaskList}/>
     </div>
     <div className="row mt-5">
-        <ShowTask />
+        <ShowTask taskList={taskList}/>
     </div>
   </div>
   );

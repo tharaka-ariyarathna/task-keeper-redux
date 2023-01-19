@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./addTask.css";
 
-const AddTask = () => {
+const AddTask = ({setTaskList}) => {
   const [formData, setFormData] = useState({title:"", description:""});
-
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -12,6 +11,10 @@ const AddTask = () => {
     setFormData(prev => {
       return {...prev, title:"", description:""}
     }) ;
+  }
+
+  const handleSubmit = () => {
+    setTaskList(formData) ;
   }
 
   return (
@@ -47,7 +50,7 @@ const AddTask = () => {
           <button type="button" className="btn btn-secondary btn-sm m-2 px-3" onClick={handleClear}>
             Clear
           </button>
-          <button type="submit" className="btn btn-primary btn-sm m-2">
+          <button type="submit" className="btn btn-primary btn-sm m-2" onClick={handleSubmit}>
             Add Task
           </button>
         </div>
