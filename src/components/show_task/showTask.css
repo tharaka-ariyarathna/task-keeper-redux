@@ -5,10 +5,15 @@
 }
 
 .task {
-    width: 95%;
+    width: 97%;
     border: 1px solid black;
 }
 
-.task > div {
+.buttondiv {
     margin-left: auto;
+    display: inline-block;
+}
+
+.description {
+    display: block;
 }
