@@ -4,7 +4,7 @@ import ShowTask from "./components/show_task/showTask";
 import "./App.css";
 
 const App = () => {
-  const [taskList, setTaskList] = useState({}) ;
+  const [taskList, setTaskList] = useState([]) ;
   console.log(taskList) ;
 
   return (
@@ -15,10 +15,10 @@ const App = () => {
         </div>
     </div>
     <div className="row mt-5">
-        <AddTask setTaskList={setTaskList}/>
+        <AddTask setTaskList={setTaskList} taskList={taskList}/>
     </div>
     <div className="row mt-5">
-        <ShowTask taskList={taskList}/>
+        <ShowTask taskList={taskList} />
     </div>
   </div>
   );

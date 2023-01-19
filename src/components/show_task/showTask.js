@@ -1,12 +1,16 @@
 import React from "react";
 import "./showTask.css";
 
-const ShowTask = () => { 
+const ShowTask = ({taskList}) => { 
     const taskListDummy = [
     { title: "task1", description: "have to complete task 1" },
     { title: "task2", description: "have to complete task 2" },
     { title: "task3", description: "have to complete task 3" },
   ];
+
+  if(taskList.length === 0){
+    console.log("working") ;
+  }
 
   return (
     <div className="showtask">

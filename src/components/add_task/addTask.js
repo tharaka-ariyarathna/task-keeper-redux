@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./addTask.css";
 
-const AddTask = ({setTaskList}) => {
+const AddTask = ({setTaskList, taskList}) => {
   const [formData, setFormData] = useState({title:"", description:""});
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,8 +13,10 @@ const AddTask = ({setTaskList}) => {
     }) ;
   }
 
-  const handleSubmit = () => {
-    setTaskList(formData) ;
+  const handleSubmit = e => {
+    e.preventDefault() ;
+    setTaskList([...taskList, formData]) ;
+    handleClear() ;
   }
 
   return (
