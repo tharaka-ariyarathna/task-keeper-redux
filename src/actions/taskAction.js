@@ -13,6 +13,6 @@ export const setEdit = (id) => (dispatch) => {
     dispatch({type:"SET_EDIT", data: id}) ;
 }
 
-export const editTask = (data, id) => {
-    
+export const editTask = (task, id) => (dispatch) => {
+    dispatch({type:"EDIT_TASK", data:{task, id}})
 }

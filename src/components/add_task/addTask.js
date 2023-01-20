@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask } from "../../actions/taskAction";
+import { addTask, editTask, setEdit } from "../../actions/taskAction";
 import "./addTask.css";
 
 const AddTask = () => {
   const [formData, setFormData] = useState({ title: "", description: "" });
-  const data = useSelector(state => state) ;
-  const dispatch = useDispatch() ;
+  const [showMessage, setShowMessage] = useState(false);
+  const data = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,22 +21,34 @@ const AddTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(data.edit){
-      
-    }else{
-      dispatch(addTask(formData)) ;
+    setShowMessage(prev => !prev)
+    if (data.edit) {
+      dispatch(editTask(formData, Number(data.edit)));
+    } else {
+      dispatch(addTask(formData));
     }
     handleClear();
+    dispatch(setEdit(null));
+    setTimeout(() => {
+      setShowMessage(prev => !prev)
+    }, 3000)
   };
 
   useEffect(() => {
-    if(data.edit){
-      setFormData(data.tasks[Number(data.edit)]) ;
+    if (data.edit) {
+      setFormData(data.tasks[Number(data.edit)]);
     }
   }, [data.edit]);
 
   return (
     <div className="addtask">
+      {showMessage ? (
+        <div style={{ color: "green" }}>
+          <h5>Task Uploaded Successfully</h5>
+        </div>
+      ) : (
+        ""
+      )}
       <form onSubmit={handleSubmit}>
         <input
           className="mt-4"
@@ -74,7 +87,7 @@ const AddTask = () => {
             Clear
           </button>
           <button type="submit" className="btn btn-primary btn-sm m-2">
-            Add Task
+            {data.edit ? "Edit" : "Add Task"}
           </button>
         </div>
       </form>
