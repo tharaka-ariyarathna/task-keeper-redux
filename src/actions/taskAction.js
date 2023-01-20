@@ -1,3 +1,3 @@
-export const addTask = (taskData) => (dispatch) => {
-    dispatch({type: "ADD_TASK", data: taskData}) ;
+export const addTask = (data) => (dispatch) => {
+    dispatch({type: "ADD_TASK", data: data}) ;
 }

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addTask } from "../../actions/taskAction";
 import "./addTask.css";
 
 const AddTask = () => {
-  const task = useSelector(state => state.tasks) ;
-  console.log(task) ;
+  const taskList = useSelector(state => state.tasks) ;
+  console.log(taskList) ;
   const [formData, setFormData] = useState({ title: "", description: "" });
+  const dispatch = useDispatch() ;
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,6 +21,7 @@ const AddTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addTask(formData)) ;
     handleClear();
   };
 
