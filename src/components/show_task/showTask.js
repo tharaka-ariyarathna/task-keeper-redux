@@ -1,6 +1,6 @@
 import React from "react";
 import Task from '../task/task' ;
-import {taskList} from '../dummy data/taskList' ;
+import {taskList} from '../../data/taskList' ;
 import "./showTask.css";
 
 const ShowTask = () => {
