@@ -6,10 +6,9 @@ import { useSelector } from "react-redux";
 
 const ShowTask = () => {
   const taskList = useSelector(state => state.tasks) ;
-  console.log(taskList) ;
 
   const handleDelete = (e) => {
-    
+    taskList = taskList.filter((_, index) => index == e.target.id) ;
   };
 
   const handleEdit = (e) => {
@@ -23,7 +22,7 @@ const ShowTask = () => {
           {taskList.map((task, index) => {
             return (
                 <>
-                    <Task task={task} index={index} handleEdit={handleEdit} handleDelete={handleDelete}/>
+                    <Task task={task} key={index} index={index} handleEdit={handleEdit} handleDelete={handleDelete}/>
                 </>
             );
           })}
