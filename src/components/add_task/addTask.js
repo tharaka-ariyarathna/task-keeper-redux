@@ -5,6 +5,7 @@ import "./addTask.css";
 
 const AddTask = () => {
   const [formData, setFormData] = useState({ title: "", description: "" });
+  const data = useSelector(state => state) ;
   const dispatch = useDispatch() ;
 
   const handleInputChange = (e) => {
@@ -19,11 +20,19 @@ const AddTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTask(formData)) ;
+    if(data.edit){
+      
+    }else{
+      dispatch(addTask(formData)) ;
+    }
     handleClear();
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if(data.edit){
+      setFormData(data.tasks[Number(data.edit)]) ;
+    }
+  }, [data.edit]);
 
   return (
     <div className="addtask">

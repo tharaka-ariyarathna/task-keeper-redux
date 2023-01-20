@@ -5,7 +5,14 @@ export const addTask = (data) => (dispatch) => {
 }
 
 export const deleteTask = (id) => (dispatch) => {
-    const taskList = useSelector(state => state.tasks) ;
-    taskList = taskList.filter((_, index) => index == id) ;
-    dispatch({type:"DELETE_TASK", data: taskList}) ;
+    //taskList = taskList.filter((_, index) => index == id) ;
+    dispatch({type:"DELETE_TASK", data: id}) ;
+}
+
+export const setEdit = (id) => (dispatch) => {
+    dispatch({type:"SET_EDIT", data: id}) ;
+}
+
+export const editTask = (data, id) => {
+    
 }
