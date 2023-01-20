@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./addTask.css";
 
 const AddTask = () => {
+  const task = useSelector(state => state.tasks) ;
+  console.log(task) ;
   const [formData, setFormData] = useState({ title: "", description: "" });
 
   const handleInputChange = (e) => {
