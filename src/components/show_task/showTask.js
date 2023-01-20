@@ -1,9 +1,12 @@
 import React from "react";
 import Task from '../task/task' ;
-import {taskList} from '../../data/taskList' ;
+import {taskListDummy} from '../../data/taskList' ;
 import "./showTask.css";
+import { useSelector } from "react-redux";
 
 const ShowTask = () => {
+  const taskList = useSelector(state => state.tasks) ;
+  console.log(taskList) ;
 
   const handleDelete = (e) => {
     

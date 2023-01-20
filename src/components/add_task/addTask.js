@@ -4,8 +4,6 @@ import { addTask } from "../../actions/taskAction";
 import "./addTask.css";
 
 const AddTask = () => {
-  const taskList = useSelector(state => state.tasks) ;
-  console.log(taskList) ;
   const [formData, setFormData] = useState({ title: "", description: "" });
   const dispatch = useDispatch() ;
 

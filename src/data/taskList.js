@@ -1,4 +1,4 @@
-export const taskList = [
+export const taskListDummy = [
     {
         title: "task 1",
         description : "has to complete task 1"
