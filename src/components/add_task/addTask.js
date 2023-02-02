@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, editTask, setEdit } from "../../actions/taskAction";
+import { getAllTasks } from "../../actions/taskAction";
 import "./addTask.css";
 
 const AddTask = () => {
@@ -15,13 +16,13 @@ const AddTask = () => {
 
   const handleClear = () => {
     setFormData((prev) => {
-      return { ...prev, title: "", description: "" };
+      return { ...prev, title: "", description: "", id: "" };
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowMessage(prev => !prev)
+    setShowMessage((prev) => !prev);
     if (data.edit) {
       dispatch(editTask(formData, Number(data.edit)));
     } else {
@@ -30,13 +31,18 @@ const AddTask = () => {
     handleClear();
     dispatch(setEdit(null));
     setTimeout(() => {
-      setShowMessage(prev => !prev)
-    }, 3000)
+      setShowMessage((prev) => !prev);
+    }, 3000);
   };
 
   useEffect(() => {
     if (data.edit) {
-      setFormData(data.tasks[Number(data.edit)]);
+      for (let i = 0; i <= data.tasks.length; i++) {
+        if (data.tasks[i].id == Number(data.edit)) {
+          setFormData(data.tasks[i]);
+          break;
+        }
+      }
     }
   }, [data.edit]);
 
